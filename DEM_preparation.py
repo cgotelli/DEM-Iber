@@ -6,7 +6,6 @@ Created on Wed Jul 20 09:00:18 2022
 @author: cgotelli
 """
 
-
 import functions as f
 
 ortoPath = "/mnt/data2/IBER/Ortophotos/"
