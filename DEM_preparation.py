@@ -9,8 +9,7 @@ Created on Wed Jul 20 09:00:18 2022
 import functions as f
 
 ortoPath = "/mnt/data2/IBER/Ortophotos/"
-rasterPath = "/mnt/data2/IBER/DEMs/"
+rasterPath = "/mnt/data2/Metashape-outputs/"
 
-f.scaleOrto(ortoPath)
+# f.scaleOrto(ortoPath)
 f.scaleRaster(rasterPath)
-

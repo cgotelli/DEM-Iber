@@ -6,15 +6,33 @@ Created on Thu Jul 21 14:27:02 2022
 @author: cgotelli
 """
 
-from rasterio.plot import show
 from rasterio import Affine, open
 from rasterio.enums import Resampling
 import numpy as np
-from os.path import isfile, join, exists
+from os.path import join
 from os import listdir
 
 
 def resample_raster(raster, name, scaleHeight=40, scaleResolution=1 / 2):
+    '''
+    
+
+    Parameters
+    ----------
+    raster : RASTER object from RASTERIO
+        DESCRIPTION.
+    name : String
+        DESCRIPTION.
+    scaleHeight : Float, optional
+        DESCRIPTION. The default is 40.
+    scaleResolution : Float, optional
+        DESCRIPTION. The default is 1 / 2.
+
+    Returns
+    -------
+    None.
+
+    '''
     t = raster.transform
 
     # rescale the metadata
@@ -52,6 +70,25 @@ def resample_raster(raster, name, scaleHeight=40, scaleResolution=1 / 2):
 
 
 def resample_orto(raster, name, scaleHeight=40, scaleResolution=1):
+    '''
+    
+
+    Parameters
+    ----------
+    raster : TYPE
+        DESCRIPTION.
+    name : TYPE
+        DESCRIPTION.
+    scaleHeight : TYPE, optional
+        DESCRIPTION. The default is 40.
+    scaleResolution : TYPE, optional
+        DESCRIPTION. The default is 1.
+
+    Returns
+    -------
+    None.
+
+    '''
     t = raster.transform
 
     # rescale the metadata
@@ -87,6 +124,19 @@ def resample_orto(raster, name, scaleHeight=40, scaleResolution=1):
 
 
 def scaleOrto(ortoPath):
+    '''
+    
+    Parameters
+    ----------
+    rasterPath : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    None.
+
+    '''
+    
     ortoFiles = sorted(listdir(ortoPath))
     for file in ortoFiles:
 
@@ -98,6 +148,19 @@ def scaleOrto(ortoPath):
 
 
 def scaleRaster(rasterPath):
+    '''
+    
+
+    Parameters
+    ----------
+    rasterPath : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    None.
+
+    '''
     rasterFiles = sorted(listdir(rasterPath))
 
     for file in rasterFiles:
