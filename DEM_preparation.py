@@ -8,8 +8,21 @@ Created on Wed Jul 20 09:00:18 2022
 
 import functions as f
 
+
+# -------------- Files' paths ---------------
 ortoPath = "/mnt/data2/IBER/Ortophotos/"
 rasterPath = "/mnt/data2/Metashape-outputs/"
 
-# f.scaleOrto(ortoPath)
-f.scaleRaster(rasterPath)
+# ---------- Scaling parameters -------------
+lengthScale = 40
+resolutionScale = 1 / 2
+
+# --------------- Booleans ------------------
+RasterScale = True
+OrtophotoScale = False
+
+# ---------------- Process ------------------
+if OrtophotoScale:
+    f.scaleOrto(ortoPath, lengthScale, resolutionScale)
+if RasterScale:
+    f.scaleRaster(rasterPath, lengthScale, resolutionScale)

@@ -9,10 +9,10 @@ General worflow for run a simulation:
 4. Use file ```DEM_preparation.py``` for scaling up both Raster and Ortophoto. It needs both paths of the Raster and Ortophoto folders,
 5. With QGis load the Ortophoto and *Project > Import/Export > Export Map to Image*. This process will save the Ortophoto as a PNG image with coordinates,
 6. Open Iber and load the PNG-format Ortophoto as Background image,
-7. After creating the mesh with the boundary and initial conditions, and the roughness coefficient, use the Raster image as elevation data source,
-8. Run the simulation.
+7. After creating the mesh with the boundary and initial conditions, and the roughness coefficient, 
+8. Use the Raster image as elevation data source in Iber to gove height to mesh nodes,
+9. Run the simulation.
+10. You can repeat points 1 to 9 the process for the next couple Raster-Ortophoto without going through step 7. As conditions are the same you can reuse the mesh and change only the height with the Raster as source of data elevation.
 
 
-## Parameters of the function
-
-The 
+All the parameters of each function are specified in detail within the code.
