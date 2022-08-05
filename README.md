@@ -39,6 +39,6 @@ If you wish to filter possible noise present in the Raster coming from Metashape
 8. Use the Raster image as elevation data source in Iber to gove height to mesh nodes,
 9. Run the simulation.
 
-> :heavy_exclamation_mark: **Important** You can repeat steps 1 to 9 the process for the next couple Raster-Ortophoto without going through number 7. As conditions are the same for every scan, you can reuse the mesh and change only the height with the Raster as source of data elevation.
+> :heavy_exclamation_mark: **Important:** You can repeat steps 1 to 9 the process for the next couple Raster-Ortophoto without going through number 7. As conditions are the same for every scan, you can reuse the mesh and change only the height with the Raster as source of data elevation.
 
 
