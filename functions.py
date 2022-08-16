@@ -199,3 +199,8 @@ def scaleRaster(rasterPath, lengthScale, resolutionScale):
             rasterFile = open(rasterName)
             resample_raster(rasterFile, rasterName, lengthScale, resolutionScale)
             print(file)
+
+
+def filterRaster():
+    print('filtrando')
+

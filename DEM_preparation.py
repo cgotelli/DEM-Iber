@@ -30,4 +30,6 @@ if processOrtophoto:
 if processRaster:
     f.scaleRaster(rasterPath, lengthScale, resolutionScale)
     if filterRasters:
-    	print("In the making")
+        print("In the making")
+        f.filterRaster() 
+        
