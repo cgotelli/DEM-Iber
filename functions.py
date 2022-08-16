@@ -15,7 +15,8 @@ from os import listdir
 
 def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
     """
-    Function that resamples a given raster after defining a new scale in height and resolution.
+    Function that resamples a given raster after defining a new scale that will be applied to
+    height and resolution.
 
     Parameters
     ----------
@@ -176,7 +177,7 @@ def scaleOrto(ortoPath, lengthScale, resolutionScale):
             print(file)
 
 
-def scaleRaster(rasterPath, lengthScale, resolutionScale):
+def scaleRaster(rasterPath, lengthScale, resolutionScale, filterRasters):
     """
     This function takes all the rasters inside a directory and applies the same function for rescaling the dimensions of each pixel.
 
@@ -197,10 +198,21 @@ def scaleRaster(rasterPath, lengthScale, resolutionScale):
         if file.endswith(".tif"):
             rasterName = join(rasterPath, file)
             rasterFile = open(rasterName)
+            if filterRasters:
+                print("In the making")
+                filterRaster() 
             resample_raster(rasterFile, rasterName, lengthScale, resolutionScale)
             print(file)
 
 
 def filterRaster():
+    """
+    Function for filtering Raster files and remove sudden discontinuities 
+
+    Returns
+    -------
+    None.
+
+    """
     print('filtrando')
 
