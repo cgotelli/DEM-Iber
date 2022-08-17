@@ -200,12 +200,12 @@ def scaleRaster(rasterPath, lengthScale, resolutionScale, filterRasters):
             rasterFile = open(rasterName)
             if filterRasters:
                 print("In the making")
-                filterRaster() 
+                rasterFile = filterRaster(rasterFile) 
             resample_raster(rasterFile, rasterName, lengthScale, resolutionScale)
             print(file)
 
 
-def filterRaster():
+def filterRaster(rasterFile):
     """
     Function for filtering Raster files and remove sudden discontinuities 
 
@@ -215,4 +215,8 @@ def filterRaster():
 
     """
     print('filtrando')
+    rasterFiltered = rasterFile
+    
+    return rasterFiltered 
+    
 
