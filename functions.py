@@ -20,7 +20,7 @@ def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
     Parameters
     ----------
     raster : RASTER object from RASTERIO
-        
+
     name : STRING
         Path with the name of the output ortophoto.
     lengthScale : FLOAT, optional
@@ -57,7 +57,8 @@ def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
 
     # It reads the raster information (shape) and defines the resampling method to bilinear.
     data = raster.read(
-        out_shape=(raster.count, height, width), resampling=Resampling.bilinear,
+        out_shape=(raster.count, height, width),
+        resampling=Resampling.bilinear,
     )
     # Replaces all nodata values (-32767 in Metashape) for a given value
     data[data == -32767] = np.float32(0.2)
@@ -88,7 +89,7 @@ def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
 def resample_orto(ortophoto, name, lengthScale=40, resolutionScale=1):
     """
     Function that resamples the ortophoto by a lenght and scale resolution factors.
-    
+
     Parameters
     ----------
     ortophoto : TIFF ORTOPHOTO IMAGE
@@ -128,7 +129,8 @@ def resample_orto(ortophoto, name, lengthScale=40, resolutionScale=1):
 
     # It reads the raster information (shape) and defines the resampling method to bilinear.
     data = ortophoto.read(  # Note changed order of indexes, arrays are band, row, col order not row, col, band
-        out_shape=(ortophoto.count, height, width), resampling=Resampling.bilinear,
+        out_shape=(ortophoto.count, height, width),
+        resampling=Resampling.bilinear,
     )
 
     # New file's name
@@ -154,7 +156,7 @@ def resample_orto(ortophoto, name, lengthScale=40, resolutionScale=1):
 def scaleOrto(ortoPath, lengthScale, resolutionScale):
     """
     This function takes all the ortophotos inside a directory and applies the same function for rescaling the dimensions of each pixel.
-    
+
     Parameters
     ----------
     rasterPath : String
