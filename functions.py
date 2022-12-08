@@ -9,11 +9,11 @@ Created on Thu Jul 21 14:27:02 2022
 from rasterio import Affine, open
 from rasterio.enums import Resampling
 import numpy as np
-from os.path import join
-from os import listdir
+from os.path import join, exists
+from os import listdir, mkdir
 
 
-def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
+def resample_raster(rasterPath, raster, name, lengthScale=40, resolutionScale=1 / 2):
     """
     Function that resamples a given raster after defining a new scale in height and resolution.
 
@@ -65,9 +65,13 @@ def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
 
     # Now multiplies the altitude of each point by the height scale factor (40 by default)
     data = data * lengthScale
-
+    
+    # New output folder
+    outputPath = join(rasterPath,"..","scaledRasters")
+    if not exists(outputPath):
+        mkdir(outputPath)
     # New file's name
-    newFile = str(name[:-4] + "-ScaledResampled.tif")
+    newFile = join(outputPath,str(name[:-4] + "-ScaledResampled.tif"))
 
     # Writes the new file with the new width, height and altitudes.
     with open(
@@ -86,7 +90,7 @@ def resample_raster(raster, name, lengthScale=40, resolutionScale=1 / 2):
     dest_file.close()
 
 
-def resample_orto(ortophoto, name, lengthScale=40, resolutionScale=1):
+def resample_orto(ortoPath, ortophoto, name, lengthScale=40, resolutionScale=1):
     """
     Function that resamples the ortophoto by a lenght and scale resolution factors.
 
@@ -132,9 +136,14 @@ def resample_orto(ortophoto, name, lengthScale=40, resolutionScale=1):
         out_shape=(ortophoto.count, height, width),
         resampling=Resampling.bilinear,
     )
-
+    
+    # New output folder
+    outputPath = join(ortoPath,"..","scaledOrto")
+    if not exists(outputPath):
+        mkdir(outputPath)
+        
     # New file's name
-    newFile = str(name[:-4] + "-scaled.tif")
+    newFile = join(outputPath,str(name[:-4] + "-ScaledResampled.tif"))
 
     # Writes the new file with the new width and height.
     with open(
@@ -174,7 +183,7 @@ def scaleOrto(ortoPath, lengthScale, resolutionScale):
         if file.endswith(".tif"):
             ortoName = join(ortoPath, file)
             ortoFile = open(ortoName)
-            resample_orto(ortoFile, ortoName, lengthScale, resolutionScale)
+            resample_orto(ortoPath, ortoFile, file, lengthScale, resolutionScale)
             print(file)
 
 
@@ -199,5 +208,5 @@ def scaleRaster(rasterPath, lengthScale, resolutionScale):
         if file.endswith(".tif"):
             rasterName = join(rasterPath, file)
             rasterFile = open(rasterName)
-            resample_raster(rasterFile, rasterName, lengthScale, resolutionScale)
+            resample_raster(rasterPath, rasterFile, file, lengthScale, resolutionScale)
             print(file)

@@ -10,16 +10,16 @@ import functions as f
 
 
 # -------------- Files' paths ---------------
-ortoPath = "/mnt/data2/IBER/Ortophotos/" 		# Path where ortophotos are stored
-rasterPath = "/mnt/data2/Metashape-outputs/"	# Path where rasters are stored
+ortoPath = "C:\\Users\\cleme\\Desktop\\Iber_Files\\Ortophotos\\" 		# Path where ortophotos are stored
+rasterPath = "C:\\Users\\cleme\\Desktop\\Iber_Files\\Rasters\\"	# Path where rasters are stored
 
 # ---------- Scaling parameters -------------
 lengthScale = 40								# Length scale for transforming from experiment size to prototype size
 resolutionScale = 1 / 2							# Resolution scale for changing number of pixels keeping the total length of the Raster/Ortophoto
 
 # --------------- Booleans ------------------
-processRaster = True							# True if want to scale Rasters
-processOrtophoto = False						# True if want to scale Ortophotos
+processRaster = False							# True if want to scale Rasters
+processOrtophoto = True						# True if want to scale Ortophotos
 filterRasters = False							# True if want to filter Rasters
 
 
